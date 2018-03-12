@@ -1,0 +1,32 @@
+<% include ../layouts/head %>
+    <% include ../layouts/header %>
+        <div class="container">
+            <div class="clear"></div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped" border="1" cellpadding="7" cellspacing="7">
+                        <tr>
+                            <th width="50px">ID</th>
+                            <th>ชื่อ</th>
+                            <th>นามสกุล</th>
+                            <th>รายละเอียด</th>
+                        </tr>
+                        <% if(result) { %>
+                            <% result.forEach(function(data) {%>
+                                <tr>
+                                    <td><%= data.id %></td>
+                                    <td><%= data.firstname %></td>
+                                    <td><%= data.lastname %></td>
+                                    <td><%= data.phone %></td>
+                                </tr>
+                            <% }); %>
+                        <% }else { %>
+                                <tr><td colspan="6">ไม่พบข้อมูล</td></tr>
+
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+<% include ../layouts/footer %>

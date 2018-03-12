@@ -13,8 +13,11 @@ router.get('/login', function(req, res, next) {
     title: 'Login',
     errors: req.session.errors 
   });
+  req.session.errors = null;
 });
 
+
+/// For Validate
 // router.post('/login', function(req, res, next) {
 //   req.check('username', 'Invalid Username').isEmpty();
 //   req.check('password', 'Password is invalid').isLength({min: 4});
@@ -28,16 +31,14 @@ router.get('/login', function(req, res, next) {
 
 router.post("/login", passport.authenticate('local-login', {
   
-  successRedirect: '/farmer/',
+  successRedirect: '/',
 
-  failureRedirect: '/login',
+  failureRedirect: '/users/login',
 
   failureFlash: true
 
 }), function(req, res, info){
-
-console.log(req);
-
+  req.session.errors = null;
 });
 
 module.exports = router;
